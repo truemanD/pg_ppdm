@@ -9,12 +9,10 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
       PGDATA: /data/postgres
-      SCRIPT_PATH: ${SCRIPT_PATH}
+      SCRIPT_PATH: /docker-entrypoint-initdb.d
     volumes:
       - ./postgres/:/docker-entrypoint-initdb.d/
       - postgres:/var/lib/postgresql/data/
-#    command: bash -c "cd /docker-entrypoint-initdb.d/
-#          && chmod +x *"
     ports:
       - "5432:5432"
     networks:
